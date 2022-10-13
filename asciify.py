@@ -60,19 +60,8 @@ def do(image, new_width=100):
     image = grayscalify(image)
 
     pixels = modify(image)
-    # print(pixels)
-    # pretty_pixels = colorize(full_color,pixels)
-    # # print(pretty_pixels)
-    # pretty_pixels.replace(" ", "")
-    len_pixels = len(pixels)
-    # len_pretty_pixels = len(pretty_pixels)
-    
-    # print(len(pixels), len(pretty_pixels))
-    # print(pixels)
-    # print(pretty_pixels)
 
-    # for i in pixels:
-    #     print (i)
+    len_pixels = len(pixels)
 
     # Construct the image from the character list
     original_image = [pixels[index:index+new_width] for index in range(0, len_pixels, new_width)]
@@ -90,12 +79,6 @@ def do(image, new_width=100):
     return ('\n'.join(new_image))
     # return ('\n'.join(original_image))
 
-
-def colorize(colorful_image, intensity_characters):
-    
-   
-    print("colorful pixels" + str(len(colorful_pixels)))
-    return ''.join(colorful_pixels)
 
 
 '''
