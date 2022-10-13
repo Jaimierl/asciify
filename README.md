@@ -83,7 +83,8 @@ Here's the algorithm -
 ## Color Output Sources
 
 - Pillow <https://pillow.readthedocs.io/en/stable/reference/Image.html?highlight=getdata#PIL.Image.Image.getdata>
-- Stack Overflow <https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal>
+- Stack Overflow - Text Color <https://stackoverflow.com/questions/287871/how-do-i-print-colored-text-to-the-terminal>
+- Stack Overflow - Iterating through multiple lists <https://stackoverflow.com/questions/1663807/how-do-i-iterate-through-two-lists-in-parallel>
 
 -------------------------------------------------------------------------------------------------------
 ## Support Me

@@ -31,7 +31,7 @@ method modify():
 def modify(image, buckets=25):
     initial_pixels = list(image.getdata())
     new_pixels = [ASCII_CHARS[pixel_value//buckets] for pixel_value in initial_pixels]
-    print("new pixels" + str(len(new_pixels)))
+    # print("new pixels" + str(len(new_pixels)))
     return ''.join(new_pixels)
 
 
@@ -40,14 +40,14 @@ method colorize():
     - adds colors to the characters from the modify method. The initial string of pixels in the modify method (which creates an array of characters) is the same length as the pixel rgb color array. We for loop through the modify method's character array and assign those characters to colors from the original image. 
 '''
 
-def colorize(colorful_image, intensity_characters):
-    initial_pixels = list(colorful_image.getdata())
-    colorful_pixels = []
-
-    for i, character in zip(initial_pixels,intensity_characters):
-        new_character = f"\033[38;2;{i[0]};{i[1]};{i[2]}m{character}\033[0m"
-        colorful_pixels.append(new_character)
-    return ''.join(colorful_pixels)
+# def colorize(colorful_image, intensity_characters):
+#     initial_pixels = list(colorful_image.getdata())
+#     colorful_pixels = []
+#     for i, character in zip(initial_pixels,intensity_characters):
+#         new_character = f"\033[38;2;{i[0]};{i[1]};{i[2]}m{character}\033[0m"
+#         colorful_pixels.append(new_character)
+#     print("colorful pixels" + str(len(colorful_pixels)))
+#     return ''.join(colorful_pixels)
 
 
 '''
@@ -60,19 +60,42 @@ def do(image, new_width=100):
     image = grayscalify(image)
 
     pixels = modify(image)
-    print(pixels)
-    pretty_pixels = colorize(full_color,pixels)
-    print(pretty_pixels)
-    len_pretty_pixels = len(pretty_pixels)
+    # print(pixels)
+    # pretty_pixels = colorize(full_color,pixels)
+    # # print(pretty_pixels)
+    # pretty_pixels.replace(" ", "")
     len_pixels = len(pixels)
+    # len_pretty_pixels = len(pretty_pixels)
+    
+    # print(len(pixels), len(pretty_pixels))
+    # print(pixels)
+    # print(pretty_pixels)
+
+    # for i in pixels:
+    #     print (i)
 
     # Construct the image from the character list
-    new_image = [pretty_pixels[index:index+new_width] for index in range(0, len_pretty_pixels, new_width)]
-
     original_image = [pixels[index:index+new_width] for index in range(0, len_pixels, new_width)]
 
-    print ('\n'.join(new_image))
-    return ( '\n'.join(original_image))
+    new_image = []
+    initial_pixels = list(full_color.getdata())
+    
+    for index,color in zip(range(0, len_pixels, new_width), initial_pixels):
+        line = (pixels[index:index+new_width])
+        # print(character)
+        print(color)
+        new_character = f"\033[38;2;{color[0]};{color[1]};{color[2]}m{line}\033[0m"
+        # print(new_character)
+        new_image.append(new_character)
+    return ('\n'.join(new_image))
+    # return ('\n'.join(original_image))
+
+
+def colorize(colorful_image, intensity_characters):
+    
+   
+    print("colorful pixels" + str(len(colorful_pixels)))
+    return ''.join(colorful_pixels)
 
 
 '''
